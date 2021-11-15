@@ -10,18 +10,33 @@ if ($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 }
 
-$name = $_POST['nm_name'];
-$msg = $_POST['nm_msg'];
+//Get data
+if (isset($_GET['get_data'])) {
+    $sql = "SELECT * FROM nm_data";
+    $result = $con->query($sql) or die('Unable to get data!');
+    $response['data'] = [];
+    if ($result) {
+        while ($data = $result->fetch_all()) {
+            $response['data'] += $data;
+        }
 
-$sql = "INSERT INTO nm_data (mname, msg) VALUES('$name', '$msg')";
-$result = $con->query($sql) or die("Query not proceed!");
+        echo json_encode($response);
+    }
+}
 
-$con->close();
+//Insert
+if (isset($_POST['nm_name']) && isset($_POST['nm_msg'])) {
+    $name = $_POST['nm_name'];
+    $msg = $_POST['nm_msg'];
 
-if ($result) {
-    echo json_encode("Data Updated!");
-    echo json_encode($name);
-    echo json_encode($msg);
-} else {
-    echo json_encode("Something went wrong!");
+    $sql = "INSERT INTO nm_data (mname, msg) VALUES('$name', '$msg')";
+    $result = $con->query($sql) or die("Query not proceed!");
+
+    $con->close();
+
+    if ($result) {
+        echo json_encode('Data Updated!');
+    } else {
+        echo json_encode("Something went wrong!");
+    }
 }

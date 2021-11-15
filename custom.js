@@ -1,27 +1,50 @@
 $(document).ready(function () {
+    var url = 'server.php';
+
+    // Insert Data
     $('.nmAlert').css('display', 'none')
     $('#nmForm').on('submit', function (e) {
         e.preventDefault()
-
-        var url = $(this).attr('action')
-        var data = $(this).serialize()
 
         $.ajax({
             //contentType: "application/json; charset=utf-8",
             type: 'POST',
             url: url,
-            data: data,
+            data: $(this).serialize(),
             // dataType : 'json',
             success: function (data) {
                 //  console.log(data)
-                 $('.nmAlert').css('display', 'block')
-                 data = JSON.parse(data)
-                 $('.nmAlert').text(data)
+                $('.nmAlert').css('display', 'block')
+                //data = JSON.parse(data)
+                $('.nmAlert').text(data)
             },
             error: function (e) {
                 console.log(e)
             }
         })
+    })
+
+    // Get data
+    $('#nmGetData').on('click', function (e) {
+        e.preventDefault()
+
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                get_data: 'AJAX'
+            },
+            success: function (response) {
+                for (let i = 0; i <= response.length; i++) {
+                    console.log(response.name[i])
+                }
+
+
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        });
     })
 })
 

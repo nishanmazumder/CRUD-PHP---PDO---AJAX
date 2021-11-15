@@ -1,3 +1,5 @@
+<?php // require_once "server.php" ?> 
+
 <!doctype html>
 <html lang="en">
 
@@ -34,6 +36,14 @@
           </div>
         </form>
 
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="javascript:void(0)" class="btn btn-success" id="nmGetData">Get</a>
+        <div class="get-data"></div>
       </div>
     </div>
   </div>
