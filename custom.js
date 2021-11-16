@@ -9,13 +9,11 @@ $(document).ready(function () {
         $.ajax({
             //contentType: "application/json; charset=utf-8",
             type: 'POST',
-            url: url,
+            url: 'tester.php',
             data: $(this).serialize(),
             // dataType : 'json',
             success: function (data) {
-                //  console.log(data)
                 $('.nmAlert').css('display', 'block')
-                //data = JSON.parse(data)
                 $('.nmAlert').text(data)
             },
             error: function (e) {
@@ -41,7 +39,7 @@ $(document).ready(function () {
                 response.forEach(item => {
                     html += '<tr><td>' + item.mname + '</td><td>' + item.msg + '</td>' + '</tr>'
                 });
-                
+
                 $('.get-data').append(table.html(html))
             },
             error: function (err) {

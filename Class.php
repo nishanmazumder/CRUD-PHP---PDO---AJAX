@@ -26,7 +26,6 @@ class Data
     //Read data
     public function nm_read_data(string $sql)
     {
-        //$sql = "SELECT * FROM nm_data";
         $query = $this->con->prepare($sql);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_OBJ);
@@ -39,6 +38,12 @@ class Data
         
     }
 
+    // Insert Data
+    public function nm_insert_data(string $sql){
+        $query = $this->con->prepare();
+        $query->execute();
+        
+    }
 
 
 

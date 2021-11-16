@@ -1,4 +1,40 @@
 <?php // require_once "server.php" ?> 
+<?php  require_once "tester.php";
+
+$con = new Tester();
+
+
+$name = '';
+$msg = '';
+
+if(isset($_POST)){
+    $name = $_POST['nm_name'];
+    $msg = $_POST['nm_msg'];
+
+
+   // $result = $con->nm_insert_data("INSERT INTO nm_data (mname, msg) VALUES(:mname, :msg)", [$name, $msg]);
+    $result = $con->nm_insert_data('nm_data', ['mname', 'msg'], [$name, $msg]);
+
+    //echo $result;
+
+    print_r($result);
+}
+
+// $persons = ['my', 'your', 'our'];
+// $colors = ['red', 'yellow', 'green'];
+
+// $string = "book color is";
+
+// $combine = array_combine($persons, $colors);
+
+
+// foreach($combine as $person => $color){
+//   echo '<pre>'; 
+
+//   echo $person.$string.$color;
+// }
+
+?> 
 
 <!doctype html>
 <html lang="en">
@@ -22,7 +58,7 @@
 
         <div class="alert alert-info nmAlert" role="alert"></div>
 
-        <form action="server.php" method="POST" id="nmForm">
+        <form action="" method="POST" id="">
           <div class="mb-3">
             <label for="nmMail" class="form-label">Name</label>
             <input type="text" class="form-control" name="nm_name" value="Nishan">
