@@ -35,11 +35,14 @@ $(document).ready(function () {
                 get_data: 'AJAX'
             },
             success: function (response) {
-                for (let i = 0; i <= response.length; i++) {
-                    console.log(response.name[i])
-                }
+                var html = '';
+                var table = $('<table></table>')
 
-
+                response.forEach(item => {
+                    html += '<tr><td>' + item.mname + '</td><td>' + item.msg + '</td>' + '</tr>'
+                });
+                
+                $('.get-data').append(table.html(html))
             },
             error: function (err) {
                 console.log(err)
