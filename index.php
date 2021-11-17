@@ -1,24 +1,26 @@
 <?php // require_once "server.php" ?> 
-<?php  require_once "tester.php";
+<?php  
 
-$con = new Tester();
+// require_once "tester.php";
 
-
-$name = '';
-$msg = '';
-
-if(isset($_POST)){
-    $name = $_POST['nm_name'];
-    $msg = $_POST['nm_msg'];
+// $con = new Tester();
 
 
-   // $result = $con->nm_insert_data("INSERT INTO nm_data (mname, msg) VALUES(:mname, :msg)", [$name, $msg]);
-    $result = $con->nm_insert_data('nm_data', ['mname', 'msg'], [$name, $msg]);
+// $name = '';
+// $msg = '';
 
-    //echo $result;
+// if(isset($_POST)){
+//     $name = $_POST['nm_name'];
+//     $msg = $_POST['nm_msg'];
 
-    print_r($result);
-}
+
+//    // $result = $con->nm_insert_data("INSERT INTO nm_data (mname, msg) VALUES(:mname, :msg)", [$name, $msg]);
+//     $result = $con->nm_insert_data('nm_data', ['mname', 'msg'], [$name, $msg]);
+
+//     //echo $result;
+
+//     print_r($result);
+// }
 
 // $persons = ['my', 'your', 'our'];
 // $colors = ['red', 'yellow', 'green'];

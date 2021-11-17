@@ -7,9 +7,20 @@ header('Access-Control-Allow-Methods: GET, POST');
 require_once "Class.php";
 $con = new Data();
 
-//Get data
-if (isset($_GET['get_data'])) {
+//Read data
+if (isset($_GET['data']) && $_GET['data'] = "GET") {
     $result = $con->nm_read_data("SELECT * FROM nm_data");
+
+    if ($result) {
+        echo json_encode($result);
+    } else {
+        echo json_encode("Error!");
+    }
+}
+
+//Delete data
+if (isset($_GET['data'])) {
+    $result = $con->nm_delete_data($_GET['data']);
 
     if ($result) {
         echo json_encode($result);
