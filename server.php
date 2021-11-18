@@ -8,7 +8,8 @@ require_once "Class.php";
 $con = new Data();
 
 //Read data
-if (isset($_GET['data']) && $_GET['data'] = "GET") {
+//echo $_GET['reference'];
+if ($_GET['reference'] === "READ") {
     $result = $con->nm_read_data("SELECT * FROM nm_data");
 
     if ($result) {
@@ -19,7 +20,10 @@ if (isset($_GET['data']) && $_GET['data'] = "GET") {
 }
 
 //Delete data
-if (isset($_GET['data'])) {
+
+if ($_GET['reference'] === "DELETE") {
+
+    // echo $_GET['reference'];
     $result = $con->nm_delete_data($_GET['data']);
 
     if ($result) {

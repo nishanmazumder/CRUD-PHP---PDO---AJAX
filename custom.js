@@ -1,43 +1,30 @@
 $(document).ready(function () {
     var url = 'server.php';
+    var reference = '';
 
     // Notifiaction
-    $('.nmAlert').css('display', 'none')
+    $('.nmAlert').hide()
 
     function nm_notification_display(data) {
-        $('.nmAlert').css('display', 'block')
+        $('.nmAlert').show()
         $('.nmAlert').text(data)
     }
 
     // Insert Data
-
     $('#nmForm').on('submit', function (e) {
         e.preventDefault()
+        var data = $(this).serialize()
+        var response = "INSERT"
+        AJAX_POST(response, data)
 
-        $.ajax({
-            //contentType: "application/json; charset=utf-8",
-            type: 'POST',
-            url: 'tester.php',
-            data: $(this).serialize(),
-            // dataType : 'json',
-            success: function (data) {
-                nm_notification_display(data)
-            },
-            error: function (e) {
-                console.log(e)
-            }
-        })
     })
 
-    // Get data
+    // Read data
     $('#nmGetData').on('click', function (e) {
-            e.preventDefault()
-            var reference = "GET"
-            // Ajax call 
-            ajax_get_data(reference);
-        }
-
-    )
+        e.preventDefault()
+        reference = "READ"
+        AJAX_GET(reference);
+    })
 
     function get_data(response) {
         var html = '';
@@ -47,32 +34,58 @@ $(document).ready(function () {
             html += '<tr><td>' + item.mname + '</td><td>' + item.msg + '</td>' + '<td><a href="javascript:void(0)" class="btn btn-danger" id="deleteData" data-id="' + item.id + '">Delete</a><a href="javascript:void(0)" class="btn btn-info" id="updateData" data-id="' + item.id + '">Update</a></td>' + '</tr>'
         });
 
-        $('.get-data').append(table.html(html))
+        $('.get-data').html(table.html(html))
 
         // Delete Data
-        $('.nm-btn-delete').on('click', function (e) {
+        $('#deleteData').on('click', function (e) {
             e.preventDefault()
-
-            var id = this.data('id')
-
-            // Ajax call 
-            ajax_get_data(id);
+            reference = "DELETE"
+            var id = $(this).data('id')
+            AJAX_GET(reference, id);
         })
 
 
 
     }
 
-    // Ajax Request Get
-    function ajax_get_data(reference) {
+    // Ajax Request - POST
+    function AJAX_POST(reference, data) {
+        $.ajax({
+            //contentType: "application/json; charset=utf-8",
+            type: 'POST',
+            url: url,
+            data: {
+                reference: reference,
+                data: data
+            },
+            // dataType : 'json',
+            success: function (data) {
+                nm_notification_display(data)
+            },
+            error: function (e) {
+                console.log(e)
+            }
+        })
+    }
+
+    // Ajax Request - GET
+    function AJAX_GET(reference, data) {
         $.ajax({
             type: 'GET',
             url: url,
             data: {
-                data: reference
+                reference: reference,
+                data: data
             },
             success: function (response) {
-                get_data(response)
+                if (reference === "READ") {
+                    get_data(response)
+                }
+
+                if (reference === "DELETE") {
+                    AJAX_GET("READ")
+                    nm_notification_display(response)
+                }
             },
             error: function (err) {
                 console.log(err)
