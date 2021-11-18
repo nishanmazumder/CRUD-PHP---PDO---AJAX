@@ -4,7 +4,6 @@ $(document).ready(function () {
 
     // Notifiaction
     $('.nmAlert').hide()
-
     function nm_notification_display(data) {
         $('.nmAlert').show()
         $('.nmAlert').text(data)
@@ -13,10 +12,10 @@ $(document).ready(function () {
     // Insert Data
     $('#nmForm').on('submit', function (e) {
         e.preventDefault()
+        reference = "INSERT"
         var data = $(this).serialize()
-        var response = "INSERT"
-        AJAX_POST(response, data)
-
+        console.log(data);
+        // AJAX_POST(reference, data)
     })
 
     // Read data
@@ -43,9 +42,6 @@ $(document).ready(function () {
             var id = $(this).data('id')
             AJAX_GET(reference, id);
         })
-
-
-
     }
 
     // Ajax Request - POST
@@ -81,7 +77,6 @@ $(document).ready(function () {
                 if (reference === "READ") {
                     get_data(response)
                 }
-
                 if (reference === "DELETE") {
                     AJAX_GET("READ")
                     nm_notification_display(response)

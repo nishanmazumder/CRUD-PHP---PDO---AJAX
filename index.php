@@ -1,5 +1,6 @@
-<?php // require_once "server.php" ?> 
-<?php  
+<?php // require_once "server.php" 
+?>
+<?php
 
 // require_once "tester.php";
 
@@ -36,7 +37,37 @@
 //   echo $person.$string.$color;
 // }
 
-?> 
+// $fruits = ['Apple', 'Banana', 'Mango', 'Jackfruit'];
+
+// // $data = '';
+// // foreach($fruits as $fruit){
+// //   $data .= ":".$fruit.",";
+// //   //array_push($data, $string);
+// // }
+// $data = implode(',', $fruits);
+// $data = rtrim($data, ',');
+//array_pop($data);
+
+// :Apple,
+// $values = '';
+// foreach($fruits as $fruit){
+//   $values .= ":".$fruit.","; 
+// }
+// $values = rtrim($values, ',');
+
+
+
+
+
+
+// echo '<pre>'; 
+// print_r($values);
+
+// for ($i = 0; $i <= count($fruits) - 1; $i++) {
+//   print_r($i);
+// }
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -60,7 +91,7 @@
 
         <div class="alert alert-info nmAlert" role="alert"></div>
 
-        <form action="" method="POST" id="">
+        <form action="" method="POST" id="nmForm">
           <div class="mb-3">
             <label for="nmMail" class="form-label">Name</label>
             <input type="text" class="form-control" name="nm_name" value="Nishan">

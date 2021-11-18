@@ -8,8 +8,6 @@ class Data
     protected $user = 'root';
     protected $pw = '';
 
-    public $pdo_constant;
-
     public function __construct()
     {
         $this->nm_db_connect();
@@ -43,41 +41,45 @@ class Data
     public function nm_insert_data(string $tbl, array $col, array $val)
     {
         // Get column
-        $columns = implode(',', $col);
-        $columns = rtrim($columns);
+        $column = implode(',', $col);
 
-        // Get binding values
+        // Set values
         $values = '';
-        //$sql_bind = [];
-        foreach ($col as $values) {
-            $values .= ":" . $values . ",";
-            $sql_bind[] = ":" . $values;
+        $pdo_cons = '';
+        foreach ($col as $item) {
+            $values .= ':' . $item . ',';
+
+            // Predefined Constant
+            if (is_int($item)) {
+                $pdo_cons = PDO::PARAM_INT;
+            } elseif (is_string($item)) {
+                $pdo_cons = PDO::PARAM_STR;
+            } elseif (is_bool($item)) {
+                $pdo_cons = PDO::PARAM_BOOL;
+            } else {
+                $pdo_cons = PDO::PARAM_NULL;
+            }
         }
-        $values = rtrim($values, ',');
 
-        // Ger Predifined constatn
-        $this->nm_get_prdf_const($val);
+        $pdo = "PDO";
+        $pdo2 = "PDO PDO PDO";
+        //Query statement
+        //$query = $this->con->prepare('INSERT INTO' . $tbl . ' (' . $column . ') VALUES(' . $values . ')');
+        $query = $this->con->prepare('INSERT INTO nm_data (mname, msg) VALUES(:mname, :msg,)');
 
-        // Query statement
-        $query = $this->con->prepare('INSERT INTO ' . $tbl . ' (' . $columns . ') VALUES(' . $values . ')');
+        //return $query;
 
-        // return $query;
-
-        $bind = array_combine($sql_bind, $val);
+        // $bind = array_combine($col, $val);
         // $bind_param= '';
-        foreach ($bind as $column => $values) {
-            //$bind_param .= ":".$column;
-            $query->bindParam($column, $values, $this->pdo_constant);
-        }
-
-        // $query->bindParam(":mname", $pdo, PDO::PARAM_STR);
-        // $query->bindParam(":msg", $pdo2, PDO::PARAM_STR);
-
-        // return $test_d;
-
-        // foreach($val as $values){
+        // foreach($bind as $column => $values){
+        //     $bind_param .= ":".$column;
         //     $query->bindParam($bind_param, $values, $pdo_cons);
         // }
+
+        $query->bindParam(":mname", $pdo, PDO::PARAM_STR);
+        $query->bindParam(":msg", $pdo2, PDO::PARAM_STR);
+
+        // return $test_d;
 
 
         $query->execute();
@@ -96,22 +98,6 @@ class Data
 
 
         //return $items;
-    }
-
-    // Get Predefined Constant
-    public function nm_get_prdf_const(array $val)
-    {
-        foreach ($val as $item) {
-            if (is_int($item)) {
-                $this->pdo_constant = PDO::PARAM_INT;
-            } elseif (is_string($item)) {
-                $this->pdo_constant = PDO::PARAM_STR;
-            } elseif (is_bool($item)) {
-                $this->pdo_constant = PDO::PARAM_BOOL;
-            } else {
-                $this->pdo_constant = PDO::PARAM_NULL;
-            }
-        }
     }
 
     public function nm_delete_data(int $id)
