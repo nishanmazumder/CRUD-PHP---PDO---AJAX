@@ -67,6 +67,13 @@
 //   print_r($i);
 // }
 
+// $str = "nm_name=Nishan&nm_msg=This%20is%20message";
+// $arr = [];
+// $data = parse_str($str, $arr);
+
+// print_r($arr['nm_name']);
+
+
 ?>
 
 <!doctype html>
@@ -93,12 +100,12 @@
 
         <form action="" method="POST" id="nmForm">
           <div class="mb-3">
-            <label for="nmMail" class="form-label">Name</label>
-            <input type="text" class="form-control" name="nm_name" value="Nishan">
+            <label for="nmName" class="form-label">Name</label>
+            <input type="text" class="form-control" name="nm_name" id="nmName" value="Nishan">
           </div>
           <div class="mb-3">
             <label for="nmMsg" class="form-label">Message</label>
-            <input type="text" class="form-control" name="nm_msg" value="This is message">
+            <input type="text" class="form-control" name="nm_msg" id="nmMsg" value="This is message">
           </div>
           <div class="mb-3">
             <button type="submit" class="btn btn-primary mb-3">Send</button>

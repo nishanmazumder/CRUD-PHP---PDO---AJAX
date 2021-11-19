@@ -20,20 +20,31 @@ $con = new Data();
 
 //Insert
 if ($_POST['reference'] === "INSERT") {
-    //  $name = $_POST['nm_name'];
-    //  $msg = $_POST['nm_msg'];
+    $data = [];
+    $post_data = parse_str($_POST['data'], $data);
+    $name = $data['nm_name'];
+    $msg = $data['nm_msg'];
 
-    //  $result=$con->nm_insert_data('nm_data', ['mname', 'msg'], [$name, $msg]);
+    $result = $con->nm_insert_data('nm_data', ['mname', 'msg'], [$name, $msg]);
 
+    // try {
 
-    // if ($result) {
-    //     echo json_encode($result);
-    // } else {
-    //     echo json_encode($result);
+    //     if ($result) {
+    //         echo json_encode($result);
+    //     }
+        
+    // } catch (PDOException $e) {
+    //     return 
     // }
-    $data = $_POST['reference'].$_POST['nm_name'].$_POST['nm_msg'];
 
-    echo json_encode($data);
+    if ($result) {
+        //echo json_encode($result);
+        print_r($result);
+        //echo $result;
+    } else {
+        echo json_encode("Error!");
+    }
+
 }
 
 //Delete data

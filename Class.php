@@ -47,28 +47,33 @@ class Data
         $columns = rtrim($columns);
 
         // Get binding values
-        $values = '';
-        //$sql_bind = [];
+        $sql_values = '';
+        $sql_bind = [];
         foreach ($col as $values) {
-            $values .= ":" . $values . ",";
+            $sql_values .= ":" . $values . ",";
             $sql_bind[] = ":" . $values;
         }
-        $values = rtrim($values, ',');
+        $sql_values = rtrim($sql_values, ',');
 
         // Ger Predifined constatn
         $this->nm_get_prdf_const($val);
 
         // Query statement
-        $query = $this->con->prepare('INSERT INTO ' . $tbl . ' (' . $columns . ') VALUES(' . $values . ')');
+        $query = $this->con->prepare('INSERT INTO ' . $tbl . ' (' . $columns . ') VALUES(' . $sql_values . ')');
 
         // return $query;
 
         $bind = array_combine($sql_bind, $val);
-        // $bind_param= '';
+        // $bind_param = [];
         foreach ($bind as $column => $values) {
-            //$bind_param .= ":".$column;
-            $query->bindParam($column, $values, $this->pdo_constant);
+            $query->bindParam($column, $values, PDO::PARAM_STR);
+
+            // $query->bindParam($column, $values, $this->pdo_constant);
+            //$query->bindParam($column, $values, PDO::PARAM_STR);
+            
         }
+
+        $query->execute();
 
         // $query->bindParam(":mname", $pdo, PDO::PARAM_STR);
         // $query->bindParam(":msg", $pdo2, PDO::PARAM_STR);
@@ -79,23 +84,30 @@ class Data
         //     $query->bindParam($bind_param, $values, $pdo_cons);
         // }
 
+        
 
-        $query->execute();
-
-        // if ($this->con->lastInsertId()) {
-        //     echo "Inserted!";
-        // }else{
-        //     echo "Not inserted!";
-        // }
 
         if ($this->con->lastInsertId()) {
-            return "Inserted!";
-        } else {
-            return "Not inserted!";
+            echo "Inserted!";
+        }else{
+            echo "Not inserted!";
         }
 
+        // if ($this->con->lastInsertId()) {
+        //     return "Inserted!";
+        // } else {
+        //     return "Not inserted!";
+        // }
 
-        //return $items;
+        // $col1 = '';
+        // $val1 = '';
+
+        // foreach ($bind as $column => $values) {
+        //     $col1 .= $column;
+        //     $val1 .= $values;
+        // }
+
+        //return $bind;
     }
 
     // Get Predefined Constant

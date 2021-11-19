@@ -14,8 +14,7 @@ $(document).ready(function () {
         e.preventDefault()
         reference = "INSERT"
         var data = $(this).serialize()
-        console.log(data);
-        // AJAX_POST(reference, data)
+        AJAX_POST(reference, data)
     })
 
     // Read data
@@ -50,7 +49,9 @@ $(document).ready(function () {
             //contentType: "application/json; charset=utf-8",
             type: 'POST',
             url: url,
+
             data: {
+                //name: "nishan",
                 reference: reference,
                 data: data
             },
