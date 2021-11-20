@@ -29,13 +29,13 @@ $(document).ready(function () {
         var table = $('<table></table>')
 
         response.forEach(item => {
-            html += '<tr><td>' + item.mname + '</td><td>' + item.msg + '</td>' + '<td><a href="javascript:void(0)" class="btn btn-danger" id="deleteData" data-id="' + item.id + '">Delete</a><a href="javascript:void(0)" class="btn btn-info" id="updateData" data-id="' + item.id + '">Update</a></td>' + '</tr>'
+            html += '<tr><td>' + item.mname + '</td><td>' + item.msg + '</td>' + '<td><a href="javascript:void(0)" class="btn btn-danger delete-data" id="deleteData" data-id="' + item.id + '">Delete</a><a href="javascript:void(0)" class="btn btn-info" id="updateData" data-id="' + item.id + '">Update</a></td>' + '</tr>'
         });
 
         $('.get-data').html(table.html(html))
 
         // Delete Data
-        $('#deleteData').on('click', function (e) {
+        $('.delete-data').on('click', function (e) {
             e.preventDefault()
             reference = "DELETE"
             var id = $(this).data('id')

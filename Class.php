@@ -27,21 +27,24 @@ class Data
     }
 
     //Read data
-    public function nm_read_data(string $sql)
+    public function nm_read_data(string $tbl)
     {
-        $query = $this->con->prepare($sql);
-        $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_OBJ);
+        try {
+            $query = $this->con->prepare('SELECT * FROM ' . $tbl . '');
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_OBJ);
 
-        if ($query->rowCount() > 0) {
-            return $result;
-        } else {
-            return "No Data found!";
+            if ($query->rowCount() > 0) {
+                return $result;
+            } else {
+                return "No Data found!";
+            }
+        } catch (PDOException $err) {
+            return 'Error:' . $query . ' ' . $err->getMessage();
         }
     }
 
     // Insert Data
-    // public function nm_insert_data(string $tbl, array $col, array $val)
     public function nm_insert_data(string $tbl, array $data)
     {
         foreach ($data as $column => $value) {
@@ -72,12 +75,16 @@ class Data
         }
     }
 
-    public function nm_delete_data(int $id)
+    public function nm_delete_data(string $tbl, int $id)
     {
-        $query = $this->con->prepare("DELETE FROM nm_data WHERE id = :id");
-        $query->bindParam(':id', $id, PDO::PARAM_STR);
-        $query->execute();
+        try {
+            $query = $this->con->prepare('DELETE FROM ' . $tbl . ' WHERE id = ' . $id . '');
+            //$query->bindParam(':id', $id, PDO::PARAM_STR);
+            $query->execute();
 
-        return "Data Deleted!";
+            return "Data Deleted!";
+        } catch (PDOException $err) {
+            return "Error:" . $query . " " . $err->getMessage();
+        }
     }
 }
