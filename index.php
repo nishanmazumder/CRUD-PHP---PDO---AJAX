@@ -23,19 +23,35 @@
 //     print_r($result);
 // }
 
-// $persons = ['my', 'your', 'our'];
+// class COLORTEST{
+//   public function string_echo($person, $color, $str){
+//     echo "<pre>";
+//     echo $person.' '.$str.' '.$color. "GET IT?";
+//   }
+// }
+
+// $colorSTR = new COLORTEST();
+
+// $persons = ['my', 'your', 'her'];
 // $colors = ['red', 'yellow', 'green'];
 
-// $string = "book color is";
+// $str = "book color is";
 
 // $combine = array_combine($persons, $colors);
 
 
 // foreach($combine as $person => $color){
-//   echo '<pre>'; 
-
-//   echo $person.$string.$color;
+//   $colorSTR->string_echo($person, $color, $str);
+//   // echo $person.$string.$color;
 // }
+
+// for($i=0; $i<=count($combine); $i++){
+//   echo "<pre>";
+//   echo "ETEST";
+// }
+
+// echo '<pre>'; 
+// print_r(count($combine));
 
 // $fruits = ['Apple', 'Banana', 'Mango', 'Jackfruit'];
 
