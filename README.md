@@ -1,1 +1,1 @@
-<h3>CRUD || PHP - AJAX - PDO</h3>
+<h3>CRUD || PHP - PDO - AJAX</h3>

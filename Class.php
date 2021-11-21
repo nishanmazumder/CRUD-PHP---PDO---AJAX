@@ -8,8 +8,6 @@ class Data
     protected $user = 'root';
     protected $pw = '';
 
-    public $pdo_constant;
-
     public function __construct()
     {
         $this->nm_db_connect();
@@ -93,6 +91,7 @@ class Data
         }
     }
 
+    // Delete Data
     public function nm_delete_data(string $tbl, int $id)
     {
         try {
