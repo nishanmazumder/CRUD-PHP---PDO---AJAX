@@ -75,6 +75,7 @@ class Data
         }
     }
 
+    // Update Data
     public function nm_update_data(string $tbl, int $id)
     {
         try {
@@ -96,7 +97,6 @@ class Data
     {
         try {
             $query = $this->con->prepare('DELETE FROM ' . $tbl . ' WHERE id = ' . $id . '');
-            //$query->bindParam(':id', $id, PDO::PARAM_STR);
             $query->execute();
 
             return "Data Deleted!";

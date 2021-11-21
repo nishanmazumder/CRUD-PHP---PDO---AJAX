@@ -37,14 +37,14 @@
       </div>
     </div>
   </div>
-  <!-- <div class="container">
+  <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <a href="javascript:void(0)" class="btn btn-success" id="nmGetData">Get</a>
+        <!-- <a href="javascript:void(0)" class="btn btn-success" id="nmGetData">Get</a> -->
         <div class="get-data"></div>
       </div>
     </div>
-  </div> -->
+  </div>
 
   <div class="body"></div>
 

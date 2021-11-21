@@ -65,11 +65,12 @@ $(document).ready(function () {
                 data: data
             },
             // dataType : 'json',
-            success: function (data) {
-                nm_notification_display(data);
+            success: function (response) {
+                AJAX_GET("READ");
+                nm_notification_display(response);
             },
-            error: function (e) {
-                console.log(e);
+            error: function (err) {
+                console.log(err);
             }
         })
     }
