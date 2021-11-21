@@ -75,6 +75,23 @@ class Data
         }
     }
 
+    public function nm_update_data(string $tbl, int $id)
+    {
+        try {
+            $query = $this->con->prepare('SELECT * FROM ' . $tbl . ' WHERE id=' . $id . '');
+            $query->execute();
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+
+            if (!empty($result)) {
+                return $result;
+            } else {
+                return "Not found!";
+            }
+        } catch (PDOException $err) {
+            return "Error:" . $query . " " . $err->getMessage();
+        }
+    }
+
     public function nm_delete_data(string $tbl, int $id)
     {
         try {

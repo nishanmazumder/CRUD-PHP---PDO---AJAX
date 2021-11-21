@@ -30,21 +30,21 @@
             <input type="text" class="form-control" name="nm_msg" id="nmMsg" value="This is message">
           </div>
           <div class="mb-3">
-            <button type="submit" class="btn btn-primary mb-3">Send</button>
+            <button type="submit" class="btn btn-primary mb-3 nm-submit">Send</button>
           </div>
         </form>
 
       </div>
     </div>
   </div>
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
       <div class="col-md-12">
         <a href="javascript:void(0)" class="btn btn-success" id="nmGetData">Get</a>
         <div class="get-data"></div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="body"></div>
 
