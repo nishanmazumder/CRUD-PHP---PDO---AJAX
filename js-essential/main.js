@@ -33,3 +33,22 @@ function outer() {
 // outerReturn()
 // outerReturn()
 
+// Cyrring
+
+let person = {
+  name: "Nishan",
+  location: "Mirpur",
+};
+
+let userInfo = (obj) => {
+  return function (info) {
+    return obj[info];
+  };
+};
+
+let getData = userInfo(person);
+
+console.log(getData('name'));
+
+// Prototype
+
