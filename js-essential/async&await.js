@@ -84,4 +84,4 @@ async function display_data() {
 
 // get_data_async()
 
-display_data();
+// display_data();

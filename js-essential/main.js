@@ -122,16 +122,38 @@ show_user_data = (id) => {
 
   let user_data_section = document.getElementsByClassName("user_data");
   let user_data_dlt_btn = document.createElement("button");
-  let user_data_dlt_show = document.createElement("div");
+  let user_data_show = document.createElement("div");
   user_data_dlt_btn.innerHTML = "Delete";
+  user_data_section[0].appendChild(user_data_show);
   user_data_section[0].appendChild(user_data_dlt_btn);
 
   user_data_dlt_btn.onclick = (e) => {
     e.preventDefault();
-    // let index = todos.indexOf(id)
-    todos.splice(id, 1)
-    console.log(todos)
+
+    show_delete_data = () => {
+      user_data_show.innerHTML = `User ${todos[id].title} has been deleted!`;
+
+      delete_data = () => {
+        todos.splice(id, 1);
+      };
+
+      return delete_data();
+    };
+
+    return show_delete_data();
   };
+
+  show_user_data_block = () => {
+    let todo_items;
+
+    todos.forEach((data) => {
+      todo_items += data.title;
+    });
+
+    user_data_show.innerHTML = todo_items;
+  };
+
+  return show_user_data_block();
 };
 
 // show_user_data(2); // 3 no data will delete
