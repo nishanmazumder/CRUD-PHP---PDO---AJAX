@@ -6,7 +6,12 @@ let person = {
 let available = {
   ...person,
   available: true,
+  age : 30
 };
+
+const {age} = available;
+
+console.log(age);
 console.log(available.name);
 
 // Ternary Operator
