@@ -10,12 +10,12 @@ const main = () => {
     console.log(a, b, c);
   };
 
-  inner();
+  return inner();
 };
 
 // main(); // 10 20 30
 
-// clouser
+// closure
 
 function outer() {
   let counter = 0;
@@ -54,9 +54,6 @@ function Person(fname, lname) {
 Person.prototype.getFullname = function () {
   return this.fisrtname + " " + this.lastname;
 };
-
-// let person1 = new Person("Nishan", "M");
-
 function checkAge(fname, lname) {
   Person.call(this, fname, lname);
   this.hasAge = true;
@@ -157,3 +154,34 @@ show_user_data = (id) => {
 };
 
 // show_user_data(2); // 3 no data will delete
+
+// Push new value id
+// let todos = [
+//   { id: 1, title: "Work Name 1", desc: "Work details 1" },
+//   { id: 2, title: "Work Name 2", desc: "Work details 2" },
+//   { id: id, title: "Work Name 3", desc: "Work details 3" },
+// ];
+
+// let id = todos[todos.length - 1].id + 1;
+
+// console.log(id) // 3
+
+// Local Stroage
+
+let local = [
+  { id: 1, title: "Work Name 1", desc: "Work details 1" },
+  { id: 2, title: "Work Name 2", desc: "Work details 2" },
+  { id: 3, title: "Work Name 3", desc: "Work details 3" },
+];
+
+if (typeof localStorage === "undefined" || localStorage === null) {
+  var LocalStorage = require('node-localstorage').LocalStorage;
+  localStorage = new LocalStorage('./scratch');
+}
+
+// console.log(JSON.stringify(local))
+
+localStorage.setItem('todos', JSON.stringify(local))
+
+
+console.log(localStorage.getItem('todos'))

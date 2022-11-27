@@ -30,3 +30,4 @@ let spliceArr = arr.splice(2, 2, 36, 49)
 // console.log(arr) // [ 4, 9, 36, 49 ]
 
 
+
