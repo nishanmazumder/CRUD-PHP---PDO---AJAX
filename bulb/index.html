@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        div{
+            height: 250px;
+        }
+        img {
+            position: absolute;
+        }
+    </style>
 </head>
+
 <body>
-    <!-- <img id="changeImage" src="./img/on.gif" alt=""> -->
-    <img id="changeImage" src="./img/off.gif" alt="">
-    <button type="button" onclick="nmBulbOn()">ON</button>
+    <div>
+        <img id="bulbOff" src="./img/off.gif" alt="">
+        <img id="bulbOn" src="./img/on.gif" alt="">
+    </div>
+
+    <button type="button" id="switch" onclick="nmBulbOn()">ON</button>
     <!-- <button type="button" onclick="nmBulbOn()">Off</button> -->
 
     <script>
+        let bulbOn = document.getElementById('bulbOn')
+        let bulbSwitch = document.getElementById('switch')
+        bulbOn.style.display = "none"
         function nmBulbOn() {
-
-
-
-            let changeImage = document.getElementById('changeImage')
-
-            let img = changeImage.attributes.src.value = "./img/on.gif"
-
-
-            if(img){
-                changeImage.attributes.src.value = "./img/off.gif"
+            if (bulbOn.style.display === "none") {
+                bulbOn.style.display = "block"
+                bulbSwitch.innerText = "OFF"
+            } else {
+                bulbOn.style.display = "none"
+                bulbSwitch.innerText = "ON"
             }
-
-            console.log(img)
-
-
-            // console.log(changeImage);
-
-
-
-
-
         }
     </script>
 </body>
