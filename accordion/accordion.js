@@ -1,21 +1,21 @@
 import accordion_items from "./data.js";
 
+// get settings
+const settings = {
+  itemOpenOrder: 2,
+};
+
 const accWrapper = document.querySelector(".nm_acc");
 let innerItem = "";
 
-//display data
 accordion_items.map((el, index) => {
+  //display data
   innerItem += `<div class="acc_item"> <div class="acc_title">${el.title}</div>
                 <div class="acc_des"><div class="content">${el.des}</div></div></div>`;
   return innerItem;
 });
 
 accWrapper.innerHTML = innerItem; // initiate
-
-// get all settings
-const settings = {
-  itemOpenOrder: 2,
-};
 
 const items = document.querySelectorAll(".acc_item");
 items[settings.itemOpenOrder - 1].classList.add("active");
@@ -27,21 +27,27 @@ items.forEach((el, i) => {
   desc.style.height = 0;
 
   // set active class
-  items[settings.itemOpenOrder - 1].querySelector(".acc_des").style.height = "auto";
+  items[settings.itemOpenOrder - 1].querySelector(".acc_des").style.height =
+    "auto";
 
-  console.log(el)
-
-  title.addEventListener("click", function (e) {   //click
+  title.addEventListener("click", function (e) {
+    //click
     e.preventDefault();
 
     const wrapper_class = this.closest(".acc_item");
 
     // if (wrapper_class.classList.contains("active")) {
+    //   wrapper_class.classList.remove("active")
+    // }else{
+    //   wrapper_class.classList.add("active")
+    // }
 
-
-      wrapper_class.classList.toggle("active");
+    wrapper_class.classList.toggle("active");
 
     if (wrapper_class.classList.contains("active")) {
+
+      console.log("true")
+
       anime({
         targets: this.nextElementSibling,
         easing: "easeInOutQuad",
