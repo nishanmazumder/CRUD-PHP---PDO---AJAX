@@ -107,7 +107,7 @@ like_counter = () => {
   };
 };
 
-// like_counter()
+// like_counter();
 
 // Show data
 show_user_data = (id) => {
@@ -175,13 +175,28 @@ let local = [
 ];
 
 if (typeof localStorage === "undefined" || localStorage === null) {
-  var LocalStorage = require('node-localstorage').LocalStorage;
-  localStorage = new LocalStorage('./scratch');
+  var LocalStorage = require("node-localstorage").LocalStorage;
+  localStorage = new LocalStorage("./scratch");
 }
 
 // console.log(JSON.stringify(local))
 
-localStorage.setItem('todos', JSON.stringify(local))
+localStorage.setItem("todos", JSON.stringify(local));
 
+// console.log(localStorage.getItem("todos"));
 
-console.log(localStorage.getItem('todos'))
+let copyBtn = document.getElementById("copyBtn");
+
+function copyToClipboard() {
+  let copy = document.getElementById("copy");
+  textToCopy(copy.innerText);
+}
+
+function textToCopy(text) {
+  let textArea = document.createElement("textarea");
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand("copy");
+  textArea.remove();
+}
