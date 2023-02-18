@@ -10,3 +10,12 @@ let b = 2;
 // let temp = arr1[0];
 // arr1[0] = arr1[4];
 // arr1[4] = temp;
+
+const lan = {
+  bang: "Bangladesh",
+  hindi: "Hindi",
+};
+
+const { bang: myLang } = lan;
+
+console.log(myLang);
