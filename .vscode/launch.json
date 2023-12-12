@@ -12,7 +12,11 @@
                 "<node_internals>/**"
             ],
             // "program": "${workspaceFolder}\\js-essential\\Object.js"
-            "program": "${workspaceFolder}\\js-essential\\asynAwit.js"
+            "program": "${workspaceFolder}\\typescript\\src\\index.ts",
+            "preLaunchTask": "tsc: build - ${workspaceFolder}\\typescript\\tsconfig.json",
+            "outFiles": [
+                "${workspaceFolder}/typescript/dist/**/*.js",
+            ]
         }
     ]
 }
