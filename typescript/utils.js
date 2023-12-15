@@ -1,5 +1,5 @@
 // create element
-createElement = (type, identifier, content, position, events = {}) => {
+function createElement(type, identifier, content, position, events = {}) {
     const el = document.createElement(type);
 
     el.className = el.id = identifier;

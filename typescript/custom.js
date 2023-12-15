@@ -2,7 +2,7 @@
 // hide & show
 // const hideShowTxt = createElement('h1', 'hideShowTxt', 'Hide & Show', 'hide_and_show');
 
-const hide = (el) => [...el].forEach((e) => (e.style.display = "none"));
+// const hide = (el) => [...el].forEach((e) => (e.style.display = "none"));
 // const show = (el) => [...el].forEach((e) => (e.style.display = "block"));
 
 
@@ -15,7 +15,7 @@ const hide = (el) => [...el].forEach((e) => (e.style.display = "none"));
 //     });
 // }
 
-const text = document.getElementById('hideShowTxt');
+// const text = document.getElementById('hideShowTxt');
 
 // hideShow = () => {
 
@@ -32,10 +32,10 @@ const text = document.getElementById('hideShowTxt');
 // });
 
 
-document
-    .getElementById("hide-btn")
-    .addEventListener("click",
-        () => hide(text));
+// document
+//     .getElementById("hide-btn")
+//     .addEventListener("click",
+//         () => hide(text));
 // document
 //     .getElementById("show-btn")
 //     .addEventListener("click",
@@ -44,7 +44,7 @@ document
 // count
 let count = 0;
 
-increment = () => {
+let inc = () => {
     count += 1;
     document.getElementById('counterTxt').textContent = count;
 }
@@ -53,7 +53,9 @@ const counterText = createElement('h1', 'counterTxt', '0', 'count_block')
 
 const counterBtn = createElement('button', 'counterBtn', 'Click', 'count_block', {
     click: () => {
-        increment();
+        inc();
     }
 });
 
+
+console.log("red");
