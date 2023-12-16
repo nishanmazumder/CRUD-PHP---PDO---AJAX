@@ -1,4 +1,7 @@
-import { createElement } from "./utils"
+import { createElement } from "./utils";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { App } from './app'
 
 // hide & show
 const hideShowTxt = createElement('h1', 'hideShowTxt', 'Hide & Show', 'hide_and_show');
@@ -37,3 +40,11 @@ const counterBtn = createElement('button', 'counterBtn', 'Click', 'count_block',
         inc();
     }
 });
+
+// React
+// Clear the existing HTML content
+document.body.innerHTML = '<div id="app"></div>';
+
+// Render your React component instead
+const root = createRoot(document.getElementById('app'));
+root.render(<App />);
