@@ -10,19 +10,18 @@
 
 <body>
 
-    <!-- <div class="hide_and_show">
-        <h1 id="hideShowTxt">tes</h1>
-        <button id="hide-btn">BTN</button>
-    </div> -->
-
+    <div class="hide_and_show"></div>
 
     <div class="count_block"></div>
 
 
-    <script src="babel/utils.js"></script>
-    <script src="babel/custom.js"></script>
-    <!-- <script src="babel/custom.js"></script> -->
-    <!-- <script src="tsc/index.js"></script> -->
+    <!-- Babel: ./node_modules/.bin/babel custom.js -d babel --preset=@babel/env -->
+    <!-- <script src="babel/utils.js"></script>
+    <script src="babel/custom.js"></script> -->
+
+    <!-- Webpack: ./node_modules/.bin/webpack --config webpack.config.js --mode=development -->
+    <script src="webpack/bundle.js"></script>
+
 </body>
 
 </html>

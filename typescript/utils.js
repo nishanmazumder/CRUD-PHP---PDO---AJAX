@@ -1,5 +1,5 @@
 // create element
-function createElement(type, identifier, content, position, events = {}) {
+export let createElement = (type, identifier, content, position, events = {}) => {
     const el = document.createElement(type);
 
     el.className = el.id = identifier;
@@ -17,5 +17,6 @@ function createElement(type, identifier, content, position, events = {}) {
 
     return el;
 }
+
 
 // hide show element

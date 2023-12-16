@@ -1,45 +1,26 @@
-// import { createElement } from "./utils"
+import { createElement } from "./utils"
+
 // hide & show
-// const hideShowTxt = createElement('h1', 'hideShowTxt', 'Hide & Show', 'hide_and_show');
+const hideShowTxt = createElement('h1', 'hideShowTxt', 'Hide & Show', 'hide_and_show');
 
-// const hide = (el) => [...el].forEach((e) => (e.style.display = "none"));
-// const show = (el) => [...el].forEach((e) => (e.style.display = "block"));
+const hide = (el) => [...el].forEach((e) => (e.style.display = "none"));
+const show = (el) => [...el].forEach((e) => (e.style.display = "block"));
 
+const hideShowFun = () => {
+    const text = document.querySelectorAll('.hideShowTxt');
 
-// const hide = (el) => {
+    [...text].forEach(element => {
+        "none" === element.style.display
+            ? show([element]) : hide([element])
+    });
+}
 
-//     console.log(el);
+const hideShowBtn = createElement('button', 'counterBtn', 'HideShow', 'hide_and_show', {
+    click: () => {
+        hideShowFun();
+    }
+});
 
-//     [...el].forEach((e) => {
-//         e.style.display = "none";
-//     });
-// }
-
-// const text = document.getElementById('hideShowTxt');
-
-// hideShow = () => {
-
-//     hide(text);
-//     // console.log(text);
-
-//     // "none" === text.style.display ? show(text) : hide(text)
-// }
-
-// const hideShowBtn = createElement('button', 'counterBtn', 'HideShow', 'hide_and_show', {
-//     click: () => {
-//         hideShow();
-//     }
-// });
-
-
-// document
-//     .getElementById("hide-btn")
-//     .addEventListener("click",
-//         () => hide(text));
-// document
-//     .getElementById("show-btn")
-//     .addEventListener("click",
-//         () => show(preBlocks));
 
 // count
 let count = 0;
@@ -56,6 +37,3 @@ const counterBtn = createElement('button', 'counterBtn', 'Click', 'count_block',
         inc();
     }
 });
-
-
-console.log("red");
