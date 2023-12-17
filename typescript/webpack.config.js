@@ -2,7 +2,7 @@ const path = require("path")
 
 module.exports = {
 	entry: "./custom.js",
-	target: ["web", "es5"],
+	target: ["web", "es6"],
 	mode: 'development',
 	output: {
 		filename: 'bundle.js',
@@ -11,19 +11,23 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.m?js|jsx$/,
+				test: /\.m?js|jsx|tsx|ts$/,
 				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-env', "@babel/preset-react"]
+						presets: [
+							"@babel/preset-env",
+							"@babel/preset-react",
+							"@babel/preset-typescript"
+						]
 					}
 				}
 			}
 		]
 	},
 	resolve: {
-		extensions: [".ts", ".js", ".jsx"],
+		extensions: [".ts", ".tsx", ".js", ".jsx"],
 	},
 	watchOptions: {
 		ignored: /node_modules/,
