@@ -42,9 +42,6 @@ const counterBtn = createElement('button', 'counterBtn', 'Click', 'count_block',
 });
 
 // React
-// Clear the existing HTML content
-document.body.innerHTML = '<div id="app"></div>';
-
-// Render your React component instead
-const root = createRoot(document.getElementById('app'));
+const reactAPP = createElement('div', 'reactAPP', null, null)
+const root = createRoot(document.getElementById('reactAPP'));
 root.render(<App />);

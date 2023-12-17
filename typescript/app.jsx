@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useState } from "react";
 
 export function App() {
@@ -5,7 +7,6 @@ export function App() {
 
     return (
         <>
-            <p>react test</p>
             <h1>{name}</h1>
             <input type="text" onChange={(e) => {
                 setName(e.target.value);

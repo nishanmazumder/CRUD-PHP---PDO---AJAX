@@ -3,6 +3,7 @@ const path = require("path")
 module.exports = {
 	entry: "./custom.js",
 	target: ["web", "es5"],
+	mode: 'development',
 	output: {
 		filename: 'bundle.js',
 		path: path.join(__dirname, "/webpack")
@@ -10,7 +11,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.m?js$/,
+				test: /\.m?js|jsx$/,
 				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader',
@@ -23,5 +24,8 @@ module.exports = {
 	},
 	resolve: {
 		extensions: [".ts", ".js", ".jsx"],
+	},
+	watchOptions: {
+		ignored: /node_modules/,
 	}
 }
