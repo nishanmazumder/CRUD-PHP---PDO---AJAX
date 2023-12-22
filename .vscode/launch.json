@@ -12,10 +12,10 @@
                 "<node_internals>/**"
             ],
             // "program": "${workspaceFolder}\\js-essential\\Object.js"
-            "program": "${workspaceFolder}\\typescript\\src\\index.ts",
-            "preLaunchTask": "tsc: build - ${workspaceFolder}\\typescript\\tsconfig.json",
+            "program": "${workspaceFolder}/typescript/src/index.ts",
+            "preLaunchTask": "tsc: build - typescript/tsconfig.json",
             "outFiles": [
-                "${workspaceFolder}/typescript/dist/**/*.js",
+                "${workspaceFolder}/out/**/*.js",
             ]
         }
     ]

@@ -3,12 +3,12 @@
 	"tasks": [
 		{
 			"type": "typescript",
-			"tsconfig": "${workspaceFolder}/typescript/tsconfig.json",
+			"tsconfig": "typescript/tsconfig.json",
 			"problemMatcher": [
 				"$tsc"
 			],
 			"group": "build",
-			"label": "tsc: build - ${workspaceFolder}/typescript/tsconfig.json"
+			"label": "tsc: build - typescript/tsconfig.json"
 		}
 	]
 }
