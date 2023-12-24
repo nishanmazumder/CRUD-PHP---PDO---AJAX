@@ -37,5 +37,40 @@ let person = {
         return date;
     }
 };
-console.log(person.personFun(new Date("December 17, 1995 03:24:00")));
+person.name = "ontest";
+const person2 = {
+    name: "testName",
+    age: '1111',
+    personFun: () => {
+        return person2.name + person2.age;
+    }
+};
+function getBirthDay(id) {
+    return 0 === id ? null : { birthday: new Date() };
+}
+const ABirth = getBirthDay(1);
+const log = null;
+let greet = "hello";
+console.log(typeof greet);
+let word;
+word = 2;
+word = {
+    setWord: () => {
+        console.log("test word!");
+    }
+};
+if ('object' === typeof (word) && null !== word) {
+    word.setWord();
+}
+class MyCar {
+    brand;
+    constructor(brand) {
+        this.brand = brand;
+    }
+    name = () => {
+        console.log(this.brand);
+    };
+}
+let car = new MyCar('BMW');
+car.name();
 //# sourceMappingURL=index.js.map

@@ -63,5 +63,96 @@ let person: {
    }
 }
 
-console.log(person.personFun(new Date("December 17, 1995 03:24:00")));
+person.name = "ontest";
+
+// console.log(person);
+
+type Person = {
+   readonly name: string,
+   age: number | string,
+   personFun: (param: string | null) => void
+}
+
+const person2: Person = {
+   name: "testName",
+   age: '1111',
+   personFun: () => {
+      return person2.name + person2.age
+   }
+}
+
+// console.log(person2.personFun('hello'));
+
+type Birthday = {
+   birthday: Date
+}
+
+function getBirthDay(id: number): Birthday | null {
+   return 0 === id ? null : { birthday: new Date() };
+}
+
+const ABirth = getBirthDay(1);
+
+// console.log(ABirth?.birthday?.getFullYear());
+
+const log: any = null;
+
+// console.log(log?.());
+
+// const devide = (
+//    { devidend, devisor }
+//       : { devidend: number, devisor: number })
+//    : number | undefined => {
+//    return devidend / devisor;
+// }
+
+// console.log(devide({ devidend: 10, devisor: 5 }));
+
+
+let greet: unknown = "hello";
+
+
+
+console.log(typeof greet);
+
+
+let word: unknown;
+
+word = 2;
+
+word = {
+   setWord: () => {
+      console.log("test word!");
+   }
+} as {
+   setWord: () => void
+}
+
+if ('object' === typeof (word) && null !== word) {
+   (word as { setWord: Function }).setWord();
+}
+
+
+interface Car {
+   brand: string
+}
+class MyCar implements Car {
+   brand;
+
+   constructor(brand: string) {
+      this.brand = brand
+   }
+
+   name = () => {
+      console.log(this.brand);
+   }
+}
+
+let car = new MyCar('BMW');
+
+car.name();
+
+
+
+
 

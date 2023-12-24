@@ -41,7 +41,7 @@ const counterBtn = createElement('button', 'counterBtn', 'Click', 'count_block',
     }
 });
 
-// React
+React
 const reactAPP = createElement('div', 'reactAPP', null, null)
 const root = createRoot(document.getElementById('reactAPP'));
 root.render(<App />);
