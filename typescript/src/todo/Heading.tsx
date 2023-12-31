@@ -19,6 +19,9 @@ const Section = ({ children, title = "My Section" }: sectionType) => {
 }
 
 const Heading = ({ title }: HeadingProps): ReactElement => {
+
+    console.log("Heading");
+
     return (<>
         <h1>{title}</h1>
         <Section>
