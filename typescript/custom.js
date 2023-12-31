@@ -3,6 +3,9 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './app'
 
+// ts
+import carName from './src/index'
+
 // hide & show
 const hideShowTxt = createElement('h1', 'hideShowTxt', 'Hide & Show', 'hide_and_show');
 
@@ -41,7 +44,10 @@ const counterBtn = createElement('button', 'counterBtn', 'Click', 'count_block',
     }
 });
 
-React
+// React
 const reactAPP = createElement('div', 'reactAPP', null, null)
 const root = createRoot(document.getElementById('reactAPP'));
 root.render(<App />);
+
+// ts
+console.log(carName);

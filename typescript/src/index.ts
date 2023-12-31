@@ -150,7 +150,9 @@ class MyCar implements Car {
 
 let car = new MyCar('BMW');
 
-car.name();
+let carName = car.name();
+
+export default carName;
 
 
 
