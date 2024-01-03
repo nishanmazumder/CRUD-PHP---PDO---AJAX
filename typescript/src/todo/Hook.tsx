@@ -1,9 +1,15 @@
-import React, { useCallback, useEffect, useMemo, useState, MouseEvent, KeyboardEvent, useRef } from 'react'
+import React, { useCallback, useEffect, useMemo, useState, useReducer, MouseEvent, KeyboardEvent, useRef, ChangeEvent } from 'react'
 import Heading from './Heading';
 
 type UserType = {
     id: number,
     name: string
+}
+
+const initState = { count: 0, text: '' }
+
+const enum ActionType {
+    INCREMENT, DECREMENT, INPUT
 }
 
 function Hook() {
@@ -12,19 +18,20 @@ function Hook() {
 
     const [count, setCount] = useState<number>(1);
 
-
     const [input, setInput] = useState<string>('test');
 
-    console.log(input);
-
-    // const inputRef = useRef<HTMLInputElement>(null);
+    const [redCount, dispatch] = useReducer(reducer, initState);
 
 
-    // console.log(inputRef.current?.value);
+
+    const inputRef = useRef<HTMLInputElement>(null);
 
 
-    const callBackCount = useCallback((e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>): void =>
-        setCount(prv => prv + 1), [])
+    console.log(inputRef.current?.value);
+
+    const callBackCount = useCallback((): void => setCount(prv => prv + 1), [])
+    // const callBackCount = useCallback((e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>): void =>
+
 
 
     const expensive = useMemo<number>(() => expensiveCalculation(count), [count]);
@@ -50,21 +57,57 @@ function Hook() {
         return () => console.log("Unmount");
     }, [user])
 
+    const increment = () => {
+        dispatch({ type: ActionType.INCREMENT })
+    }
+
+    const decrement = () => {
+        dispatch({ type: ActionType.DECREMENT })
+    }
+
+    const handleInputReducer = (e: ChangeEvent<HTMLInputElement>) => {
+        dispatch({ type: ActionType.INPUT, payload: e.target.value })
+    }
+
     return (
         <div>
             <Heading title={'HOOK'} />
             <button onClick={callBackCount}>Add</button>
-            <input className='hook_input' type="text" onChange={(e) => setInput(e.target.value)} />
+            <input type="text" onChange={(e) => setInput(e.target.value)} />
+            <input type="text" placeholder='check' ref={inputRef} />
+            <h1>{redCount.count}</h1>
+            <button onClick={increment}>INC</button>
+            <button onClick={decrement}>DEC</button>
+            <h1>{redCount.text}</h1>
+            <input type="text" onChange={handleInputReducer} />
         </div>
     )
 }
 
 const expensiveCalculation = (count: number): number => {
-    for (let i = 0; i < 10000000000; i++) {
+    for (let i = 0; i < 1000; i++) {
         count += 1
     }
 
     return count;
+}
+
+type ReducerAction = {
+    type: ActionType,
+    payload?: string
+}
+
+const reducer = (state: typeof initState, action: ReducerAction): typeof initState => {
+    switch (action.type) {
+        case ActionType.INCREMENT:
+            return { ...state, count: state.count + 1 }
+        case ActionType.DECREMENT:
+            return { ...state, count: state.count - 1 }
+        case ActionType.INPUT:
+            return { ...state, text: action.payload ?? '' }
+        default:
+            throw new Error()
+    }
 }
 
 export default Hook
