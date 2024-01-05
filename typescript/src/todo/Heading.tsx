@@ -1,8 +1,12 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode, useContext } from 'react';
+
+import { TitleContext } from './Context';
 
 type HeadingProps = {
     title: string
 }
+
+console.log(TitleContext);
 
 type sectionType = {
     title?: string,
@@ -18,12 +22,18 @@ const Section = ({ children, title = "My Section" }: sectionType) => {
     );
 }
 
-const Heading = ({ title }: HeadingProps): ReactElement => {
+// const Heading = ({ title }: HeadingProps): ReactElement => {
+const Heading = (): ReactElement => {
 
     console.log("Heading");
 
+    const useTitleContext = useContext(TitleContext);
+
+    console.log(useTitleContext);
+
     return (<>
-        <h1>{title}</h1>
+        {/* <h1>{title}</h1> */}
+        <h1>{useTitleContext}</h1>
         <Section>
             {"my Section child"}
         </Section>

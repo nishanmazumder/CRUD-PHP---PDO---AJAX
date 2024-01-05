@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState, useReducer, MouseEvent, KeyboardEvent, useRef, ChangeEvent } from 'react'
 import Heading from './Heading';
+import { TitleContext } from './Context';
 
 type UserType = {
     id: number,
@@ -71,7 +72,9 @@ function Hook() {
 
     return (
         <div>
-            <Heading title={'HOOK'} />
+            <TitleContext.Provider value={"Hook Title Context!"}>
+                <Heading />
+            </TitleContext.Provider>
             <button onClick={callBackCount}>Add</button>
             <input type="text" onChange={(e) => setInput(e.target.value)} />
             <input type="text" placeholder='check' ref={inputRef} />
