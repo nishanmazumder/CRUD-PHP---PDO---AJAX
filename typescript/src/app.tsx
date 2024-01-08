@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './todo/App'
+// import App from './todo/App'
+import App from './product/App';
 
 const TSXApp: FunctionComponent = (): JSX.Element => {
 
